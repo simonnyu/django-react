@@ -139,7 +139,7 @@ LOCALE_PATHS = (
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'staticdj'
 
 STATICFILES_DIRS= [os.path.join(BASE_DIR, 'build/static'),]
 
