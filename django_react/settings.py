@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*5q6ve!s75o72eni4-&j+h=hr-oy4u9qe*vrg(a1aa&q*2!z$='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,12 +43,12 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'django_react.urls'
@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
-                os.path.join(BASE_DIR, 'build'),
+                os.path.join(BASE_DIR, 'frontend/build'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'zh-hant'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Taipei'
 
@@ -122,7 +122,7 @@ USE_TZ = True
 # 網站可支持的語言
 from django.utils.translation import gettext_lazy as _
 LANGUAGES = (
-    ('en', ('English')),
+    ('en', _('English')),
     ('zh-hant', _('Traditional Chinese')),
 )
 # 設置 locale 的路徑
@@ -139,10 +139,4 @@ LOCALE_PATHS = (
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'staticdj'
-
-STATICFILES_DIRS= [os.path.join(BASE_DIR, 'build/static'),]
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-ALLOWED_HOSTS = ['*']
-DEBUG = False
+STATICFILES_DIRS= [os.path.join(BASE_DIR, 'frontend/build/static'),]

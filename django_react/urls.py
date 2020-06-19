@@ -24,8 +24,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
-    path('react',TemplateView.as_view(template_name='index.html'))]
+    path('react/',TemplateView.as_view(template_name='index.html')),
+    path('', include('hello.urls'))]
 # 設置以「語言」開頭的 URL 如 /en/demo 或是 /zh-TW/demo
-urlpatterns += i18n_patterns(
-    path('', include('hello.urls')),
-)
